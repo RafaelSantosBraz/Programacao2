@@ -42,7 +42,7 @@ public class BibliotecaTest {
         // TODO review the generated test code and remove the default call to fail.
         Biblioteca b = new Biblioteca();
         Autor a = new Autor(0, "Rafael dos Santos Braz");
-        Livro l = new Livro("Programando em Java", 2017, "Deuses do Java", a);
+        Livro l = new Livro("Programando em Java", 2017, "Deuses do Java AVAJ", a);
         b.adicionarLivro(l);
         System.out.println(b.emprestarLivro(l));
         System.out.println(b.emprestarLivro(l));
