@@ -10,29 +10,28 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
  * @author a120121
  */
 public class EstacionamentoTest {
-    
+
     public EstacionamentoTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -49,7 +48,8 @@ public class EstacionamentoTest {
 //            System.out.println(vaga.situacao);
 //        }
         System.out.println(e.estacionar("1234"));
-        System.out.println(e.retirar("1234"));
+        System.out.println(e.estacionar("12345"));
+        System.out.println(e.retirar("1234567"));
     }
-    
+
 }
