@@ -34,7 +34,7 @@ public class Estacionamento {
             i++;
         }
     }
-
+    
     boolean estacionar(String placa) {
         for (Vaga vaga : getVAGAS()) {
             if (!vaga.getSituacao()) {

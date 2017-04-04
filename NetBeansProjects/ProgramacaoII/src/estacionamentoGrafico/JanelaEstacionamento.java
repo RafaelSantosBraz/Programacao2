@@ -5,6 +5,8 @@
  */
 package estacionamentoGrafico;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author rafael
@@ -14,13 +16,22 @@ public class JanelaEstacionamento extends javax.swing.JFrame {
     /**
      * Creates new form JanelaEstacionamento
      */
-    
     Estacionamento e;
-    
+
     public JanelaEstacionamento() {
         e = new Estacionamento();
         initComponents();
-        
+
+    }
+
+    public void atualizarLista() {
+       for (int c = 0; c < e.getVAGAS().length; c++){
+           if (e.getVAGAS()[c].getSituacao()){
+               listaSituacao.getModel().setValueAt(e.getVAGAS()[c].getPlacaCarroAtual(), c, 1);
+           } else{
+               listaSituacao.getModel().setValueAt(null, c, 1);
+           }
+       }
     }
 
     /**
@@ -36,10 +47,10 @@ public class JanelaEstacionamento extends javax.swing.JFrame {
         painelOpcoes = new javax.swing.JPanel();
         botaoEstacionar = new javax.swing.JButton();
         botaoRetirar = new javax.swing.JButton();
+        placaCarro = new javax.swing.JTextField();
         painelOpcoes1 = new javax.swing.JPanel();
-        E1 = new javax.swing.JLabel();
-        E2 = new javax.swing.JLabel();
-        E3 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        listaSituacao = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Estacionamento");
@@ -51,62 +62,114 @@ public class JanelaEstacionamento extends javax.swing.JFrame {
 
         botaoEstacionar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         botaoEstacionar.setText("Estacionar Carro");
+        botaoEstacionar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botaoEstacionarMouseClicked(evt);
+            }
+        });
+        botaoEstacionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoEstacionarActionPerformed(evt);
+            }
+        });
 
         botaoRetirar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         botaoRetirar.setText("Retirar Carro");
         botaoRetirar.setPreferredSize(new java.awt.Dimension(202, 32));
+        botaoRetirar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoRetirarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout painelOpcoesLayout = new javax.swing.GroupLayout(painelOpcoes);
         painelOpcoes.setLayout(painelOpcoesLayout);
         painelOpcoesLayout.setHorizontalGroup(
             painelOpcoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelOpcoesLayout.createSequentialGroup()
-                .addGap(82, 82, 82)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelOpcoesLayout.createSequentialGroup()
+                .addContainerGap(89, Short.MAX_VALUE)
                 .addComponent(botaoEstacionar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botaoRetirar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addGap(79, 79, 79))
+            .addGroup(painelOpcoesLayout.createSequentialGroup()
+                .addGap(182, 182, 182)
+                .addComponent(placaCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         painelOpcoesLayout.setVerticalGroup(
             painelOpcoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelOpcoesLayout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(placaCarro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(painelOpcoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaoEstacionar)
                     .addComponent(botaoRetirar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         painelOpcoes1.setBorder(javax.swing.BorderFactory.createTitledBorder("Situação das Vagas:"));
 
-        E1.setText("E1");
+        listaSituacao.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"E1", null},
+                {"E2", null},
+                {"E3", null},
+                {"E4", null},
+                {"E5", null},
+                {"E6", null},
+                {"E7", null},
+                {"E8", null},
+                {"E9", null},
+                {"E10", null},
+                {"E11", null},
+                {"E12", null},
+                {"D1", null},
+                {"D2", null},
+                {"D3", null},
+                {"D4", null},
+                {"D5", null},
+                {"D6", null},
+                {"D7", null},
+                {"D8", null},
+                {"D9", null},
+                {"D10", null},
+                {"D11", null},
+                {"D12", null}
+            },
+            new String [] {
+                "Vaga", "Placa"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
 
-        E2.setText("E2");
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
-        E3.setText("E3");
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(listaSituacao);
 
         javax.swing.GroupLayout painelOpcoes1Layout = new javax.swing.GroupLayout(painelOpcoes1);
         painelOpcoes1.setLayout(painelOpcoes1Layout);
         painelOpcoes1Layout.setHorizontalGroup(
             painelOpcoes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelOpcoes1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(painelOpcoes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(E1)
-                    .addComponent(E2)
-                    .addComponent(E3))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 554, Short.MAX_VALUE)
         );
         painelOpcoes1Layout.setVerticalGroup(
             painelOpcoes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelOpcoes1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(E1)
-                .addGap(18, 18, 18)
-                .addComponent(E2)
-                .addGap(18, 18, 18)
-                .addComponent(E3)
-                .addContainerGap(294, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 14, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -115,9 +178,9 @@ public class JanelaEstacionamento extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(painelOpcoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(painelOpcoes1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(painelOpcoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(painelOpcoes1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -127,7 +190,7 @@ public class JanelaEstacionamento extends javax.swing.JFrame {
                 .addComponent(painelOpcoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(painelOpcoes1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -138,11 +201,45 @@ public class JanelaEstacionamento extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botaoEstacionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEstacionarActionPerformed
+        if (placaCarro.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Campo não pode ser nulo!", "MENSAGEM", 0);
+        } else {
+            if (e.estacionar(placaCarro.getText())) {
+                JOptionPane.showMessageDialog(null, "Vaga alugada com sucesso!", "MENSAGEM", 1);
+                atualizarLista();
+                placaCarro.setText(null);
+            } else {
+                JOptionPane.showMessageDialog(null, "Nenhuma Vaga disponível!", "MENSAGEM", 0);
+            }
+        }
+    }//GEN-LAST:event_botaoEstacionarActionPerformed
+
+    private void botaoRetirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoRetirarActionPerformed
+        if (placaCarro.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Campo não pode ser nulo!", "MENSAGEM", 0);
+        } else {
+            long valor = e.retirar(placaCarro.getText());
+            if (valor != 0) {
+                JOptionPane.showMessageDialog(null, "Carro retirado com sucesso! valor total: R$" + Long.toString(valor), "MENSAGEM", 1);
+                atualizarLista();
+                placaCarro.setText(null);
+            } else {
+                JOptionPane.showMessageDialog(null, "Placa não encontrada!", "MENSAGEM", 0);
+            }
+        }
+    }//GEN-LAST:event_botaoRetirarActionPerformed
+
+    private void botaoEstacionarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoEstacionarMouseClicked
+    }//GEN-LAST:event_botaoEstacionarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -180,13 +277,13 @@ public class JanelaEstacionamento extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel E1;
-    private javax.swing.JLabel E2;
-    private javax.swing.JLabel E3;
     private javax.swing.JButton botaoEstacionar;
     private javax.swing.JButton botaoRetirar;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable listaSituacao;
     private javax.swing.JPanel painelOpcoes;
     private javax.swing.JPanel painelOpcoes1;
+    private javax.swing.JTextField placaCarro;
     // End of variables declaration//GEN-END:variables
 }
