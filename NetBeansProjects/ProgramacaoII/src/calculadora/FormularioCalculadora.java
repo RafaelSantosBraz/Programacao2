@@ -5,6 +5,8 @@
  */
 package calculadora;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author rafael
@@ -17,12 +19,32 @@ public class FormularioCalculadora extends javax.swing.JFrame {
         calc = new Calculadora();
         initComponents();
     }
-    
-    public void aplicarValores(){
-        calc.setX(Double.parseDouble(campoX.getText()));
-        calc.setY(Double.parseDouble(campoY.getText()));
+
+    public boolean aplicarValores() {
+        try {
+            calc.setX(Double.parseDouble(campoX.getText()));
+            calc.setY(Double.parseDouble(campoY.getText()));
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
     
+    public boolean aplicarValores(char op) {
+        try {
+            calc.setX(Double.parseDouble(campoX.getText()));
+            calc.setY(Double.parseDouble(campoY.getText()));
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        if (op == '/') {
+            if (Double.parseDouble(campoY.getText()) == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -215,23 +237,39 @@ public class FormularioCalculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoLimparActionPerformed
 
     private void botaoSomarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSomarActionPerformed
-        aplicarValores();
-        campoResultado.setText(Double.toString(calc.somar()));
+        if (aplicarValores()) {
+            campoResultado.setText(Double.toString(calc.somar()));
+        } else {
+            JOptionPane.showMessageDialog(null, "Não é possível realizar operação! Campos incorretos.", "MENSAGEM", 1);
+            campoResultado.setText("ERRO");
+        }
     }//GEN-LAST:event_botaoSomarActionPerformed
 
     private void botaoSubtrairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSubtrairActionPerformed
-        aplicarValores();
-        campoResultado.setText(Double.toString(calc.subtrair()));
+        if (aplicarValores()) {
+            campoResultado.setText(Double.toString(calc.subtrair()));
+        } else {
+            JOptionPane.showMessageDialog(null, "Não é possível realizar operação! Campos incorretos.", "MENSAGEM", 1);
+            campoResultado.setText("ERRO");
+        }
     }//GEN-LAST:event_botaoSubtrairActionPerformed
 
     private void botaoMultiplicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoMultiplicarActionPerformed
-        aplicarValores();
-        campoResultado.setText(Double.toString(calc.multiplicar()));
+        if (aplicarValores()) {
+            campoResultado.setText(Double.toString(calc.multiplicar()));
+        } else {
+            JOptionPane.showMessageDialog(null, "Não é possível realizar operação! Campos incorretos.", "MENSAGEM", 1);
+            campoResultado.setText("ERRO");
+        }
     }//GEN-LAST:event_botaoMultiplicarActionPerformed
 
     private void botaoDividirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoDividirActionPerformed
-        aplicarValores();
-        campoResultado.setText(Double.toString(calc.dividir()));
+        if (aplicarValores('/')) {
+            campoResultado.setText(Double.toString(calc.dividir()));
+        } else {
+            JOptionPane.showMessageDialog(null, "Não é possível realizar operação! Campos incorretos e/ou divisão por 0.", "MENSAGEM", 1);
+            campoResultado.setText("ERRO");
+        }
     }//GEN-LAST:event_botaoDividirActionPerformed
 
     /**
