@@ -15,24 +15,24 @@ public class Calculadora {
     private double y;
 
     public Calculadora() {
-        setX(0.0);
-        setY(0.0);
+        x = 0.0;
+        y = 0.0;
     }
 
     public double somar() {
-        return getX() + getY();
+        return x + y;
     }
 
     public double subtrair() {
-        return getX() - getY();
+        return x - y;
     }
     
     public double multiplicar(){
-        return getX() * getY();
+        return x * y;
     }
     
     public double dividir(){
-        return getX() / getY();
+        return x / y;
     }
     
     public double getX() {

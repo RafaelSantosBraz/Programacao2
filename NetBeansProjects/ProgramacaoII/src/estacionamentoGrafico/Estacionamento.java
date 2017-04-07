@@ -51,10 +51,10 @@ public class Estacionamento {
         int p;
         long permanencia = -1;
         for (p = 0; p < 24; p++) {
-            if (getVAGAS()[p].getPlacaCarroAtual().equals(placa)) {
-                getVAGAS()[p].setSituacao(false);
-                getVAGAS()[p].setDataHoraSaida(LocalDateTime.now());
-                permanencia = ChronoUnit.HOURS.between(getVAGAS()[p].getDataHoraEntrada(), getVAGAS()[p].getDataHoraSaida());
+            if (VAGAS[p].getPlacaCarroAtual().equals(placa)) {
+                VAGAS[p].setSituacao(false);
+                VAGAS[p].setDataHoraSaida(LocalDateTime.now());
+                permanencia = ChronoUnit.HOURS.between(VAGAS[p].getDataHoraEntrada(), VAGAS[p].getDataHoraSaida());
                 break;
             }
         }
