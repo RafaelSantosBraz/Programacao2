@@ -24,14 +24,36 @@ public class TelaVelha extends javax.swing.JFrame {
         velha = new Velha(j1, j2);
         initComponents();
     }
-    
-    public void atualizarPlacar(){
-        if (velha.getFim()){
-            if (velha.getVencedor() == null){
-                
+
+    public void atualizarPlacar() {
+        if (velha.getFim()) {
+            if (velha.getVencedor() == null) {
+                campoPlacarVelha.setText(Integer.toString(Integer.parseInt(campoPlacarVelha.getText()) + 1));
+                JOptionPane.showMessageDialog(null, "Deu Velha!", "FIM DE JOGO", 1);
+            } else if (velha.getVencedor() == j1) {
+                campoPlacarJ1.setText(Integer.toString(Integer.parseInt(campoPlacarJ1.getText()) + 1));
+                JOptionPane.showMessageDialog(null, "O Jogador 1 ganhou!", "FIM DE JOGO", 1);
+            } else {
+                campoPlacarJ2.setText(Integer.toString(Integer.parseInt(campoPlacarJ2.getText()) + 1));
+                JOptionPane.showMessageDialog(null, "O Jogador 2 ganhou!", "FIM DE JOGO", 1);
+            }
+            velha.setFim(false);
+            velha.setVencedor(null);
+            botaoPos1.setEnabled(false);
+            botaoPos2.setEnabled(false);
+            botaoPos3.setEnabled(false);
+            botaoPos4.setEnabled(false);
+            botaoPos5.setEnabled(false);
+            botaoPos6.setEnabled(false);
+            botaoPos7.setEnabled(false);
+            botaoPos8.setEnabled(false);
+            botaoPos9.setEnabled(false);
+            for (int c = 0; c < 9; c++) {
+                velha.getJogadas()[c] = null;
             }
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -386,6 +408,7 @@ public class TelaVelha extends javax.swing.JFrame {
             jogadorAtual = j1;
         }
         botaoPos1.setEnabled(false);
+        atualizarPlacar();
     }//GEN-LAST:event_botaoPos1ActionPerformed
 
     private void botaoPos2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoPos2ActionPerformed
@@ -398,6 +421,7 @@ public class TelaVelha extends javax.swing.JFrame {
             jogadorAtual = j1;
         }
         botaoPos2.setEnabled(false);
+        atualizarPlacar();
     }//GEN-LAST:event_botaoPos2ActionPerformed
 
     private void botaoPos3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoPos3ActionPerformed
@@ -410,6 +434,7 @@ public class TelaVelha extends javax.swing.JFrame {
             jogadorAtual = j1;
         }
         botaoPos3.setEnabled(false);
+        atualizarPlacar();
     }//GEN-LAST:event_botaoPos3ActionPerformed
 
     private void botaoPos4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoPos4ActionPerformed
@@ -422,6 +447,7 @@ public class TelaVelha extends javax.swing.JFrame {
             jogadorAtual = j1;
         }
         botaoPos4.setEnabled(false);
+        atualizarPlacar();
     }//GEN-LAST:event_botaoPos4ActionPerformed
 
     private void botaoPos5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoPos5ActionPerformed
@@ -434,6 +460,7 @@ public class TelaVelha extends javax.swing.JFrame {
             jogadorAtual = j1;
         }
         botaoPos5.setEnabled(false);
+        atualizarPlacar();
     }//GEN-LAST:event_botaoPos5ActionPerformed
 
     private void botaoPos6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoPos6ActionPerformed
@@ -446,6 +473,7 @@ public class TelaVelha extends javax.swing.JFrame {
             jogadorAtual = j1;
         }
         botaoPos6.setEnabled(false);
+        atualizarPlacar();
     }//GEN-LAST:event_botaoPos6ActionPerformed
 
     private void botaoPos7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoPos7ActionPerformed
@@ -458,6 +486,7 @@ public class TelaVelha extends javax.swing.JFrame {
             jogadorAtual = j1;
         }
         botaoPos7.setEnabled(false);
+        atualizarPlacar();
     }//GEN-LAST:event_botaoPos7ActionPerformed
 
     private void botaoPos8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoPos8ActionPerformed
@@ -470,6 +499,7 @@ public class TelaVelha extends javax.swing.JFrame {
             jogadorAtual = j1;
         }
         botaoPos8.setEnabled(false);
+        atualizarPlacar();
     }//GEN-LAST:event_botaoPos8ActionPerformed
 
     private void botaoPos9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoPos9ActionPerformed
@@ -482,6 +512,7 @@ public class TelaVelha extends javax.swing.JFrame {
             jogadorAtual = j1;
         }
         botaoPos9.setEnabled(false);
+        atualizarPlacar();
     }//GEN-LAST:event_botaoPos9ActionPerformed
 
     private void botaoIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoIniciarActionPerformed

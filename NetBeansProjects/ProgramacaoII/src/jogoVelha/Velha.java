@@ -19,6 +19,7 @@ public class Velha {
     public void inserirJogada(Jogador atual, int pos) {
         jogadas[pos - 1] = atual;
         verificarEstado();
+
     }
 
     public Jogador getJogador1() {
@@ -39,6 +40,27 @@ public class Velha {
 
     public void verificarEstado() {
         int preen = 0;
+        fim = true;
+        if (jogadas[0] == jogadas[1] && jogadas[0] == jogadas[2] && jogadas[0] != null) {
+            vencedor = jogadas[0];
+        } else if (jogadas[3] == jogadas[4] && jogadas[3] == jogadas[5] && jogadas[3] != null) {
+            vencedor = jogadas[3];
+        } else if (jogadas[6] == jogadas[7] && jogadas[6] == jogadas[8] && jogadas[6] != null) {
+            vencedor = jogadas[6];
+        } else if (jogadas[0] == jogadas[3] && jogadas[0] == jogadas[6] && jogadas[0] != null) {
+            vencedor = jogadas[0];
+        } else if (jogadas[1] == jogadas[4] && jogadas[1] == jogadas[7] && jogadas[1] != null) {
+            vencedor = jogadas[1];
+        } else if (jogadas[2] == jogadas[5] && jogadas[2] == jogadas[8] && jogadas[2] != null) {
+            vencedor = jogadas[2];
+        } else if (jogadas[0] == jogadas[4] && jogadas[0] == jogadas[8] && jogadas[0] != null) {
+            vencedor = jogadas[0];
+        } else if (jogadas[6] == jogadas[4] && jogadas[6] == jogadas[2] && jogadas[6] != null) {
+            vencedor = jogadas[6];
+        } else {
+            vencedor = null;
+            fim = false;
+        }
         for (int c = 0; c < 9; c++) {
             if (jogadas[c] != null) {
                 preen++;
@@ -46,25 +68,6 @@ public class Velha {
         }
         if (preen == 9) {
             fim = true;
-            if (jogadas[0] == jogadas[1] && jogadas[0] == jogadas[2]) {
-                vencedor = jogadas[0];
-            } else if (jogadas[3] == jogadas[4] && jogadas[3] == jogadas[5]) {
-                vencedor = jogadas[3];
-            } else if (jogadas[6] == jogadas[7] && jogadas[6] == jogadas[8]) {
-                vencedor = jogadas[6];
-            } else if (jogadas[0] == jogadas[3] && jogadas[0] == jogadas[6]) {
-                vencedor = jogadas[0];
-            } else if (jogadas[1] == jogadas[4] && jogadas[1] == jogadas[7]) {
-                vencedor = jogadas[1];
-            } else if (jogadas[2] == jogadas[5] && jogadas[2] == jogadas[8]) {
-                vencedor = jogadas[2];
-            } else if (jogadas[0] == jogadas[4] && jogadas[0] == jogadas[8]) {
-                vencedor = jogadas[0];
-            } else if (jogadas[6] == jogadas[4] && jogadas[6] == jogadas[2]) {
-                vencedor = jogadas[6];
-            } else {
-                vencedor = null;
-            }
         }
     }
 
