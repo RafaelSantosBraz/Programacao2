@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 public class TelaVelha extends javax.swing.JFrame {
 
     private Velha velha;
-    private Jogador j1, j2;
+    private Jogador j1, j2; //usar diretamente o da classe Velha (arrumar)
     private Jogador jogadorAtual;
 
     public TelaVelha() {
