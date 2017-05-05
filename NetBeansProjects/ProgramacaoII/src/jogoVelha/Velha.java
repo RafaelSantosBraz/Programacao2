@@ -7,13 +7,15 @@ public class Velha {
     private Jogador[] jogadas;
     private boolean fim;
     private Jogador vencedor;
+    private Jogador jogadorAtual;
 
-    public Velha(Jogador jogador1, Jogador jogador2) {
-        this.jogador1 = jogador1;
-        this.jogador2 = jogador2;
+    public Velha() {
+        jogador1 = new Jogador();
+        jogador2 = new Jogador();
         jogadas = new Jogador[9];
         fim = false;
         vencedor = null;
+        jogadorAtual = jogador1;
     }
 
     public void inserirJogada(Jogador atual, int pos) {
@@ -95,4 +97,11 @@ public class Velha {
         this.vencedor = vencedor;
     }
 
+    public Jogador getJogadorAtual() {
+        return jogadorAtual;
+    }
+
+    public void setJogadorAtual(Jogador jogadorAtual) {
+        this.jogadorAtual = jogadorAtual;
+    }
 }

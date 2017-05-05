@@ -14,14 +14,9 @@ import javax.swing.JOptionPane;
 public class TelaVelha extends javax.swing.JFrame {
 
     private Velha velha;
-    private Jogador j1, j2; //usar diretamente o da classe Velha (arrumar)
-    private Jogador jogadorAtual;
 
     public TelaVelha() {
-        j1 = new Jogador();
-        j2 = new Jogador();
-        jogadorAtual = j1;
-        velha = new Velha(j1, j2);
+        velha = new Velha();
         initComponents();
     }
 
@@ -30,7 +25,7 @@ public class TelaVelha extends javax.swing.JFrame {
             if (velha.getVencedor() == null) {
                 campoPlacarVelha.setText(Integer.toString(Integer.parseInt(campoPlacarVelha.getText()) + 1));
                 JOptionPane.showMessageDialog(null, "Deu Velha!", "FIM DE JOGO", 1);
-            } else if (velha.getVencedor() == j1) {
+            } else if (velha.getVencedor() == velha.getJogador1()) {
                 campoPlacarJ1.setText(Integer.toString(Integer.parseInt(campoPlacarJ1.getText()) + 1));
                 JOptionPane.showMessageDialog(null, "O Jogador 1 ganhou!", "FIM DE JOGO", 1);
             } else {
@@ -399,117 +394,117 @@ public class TelaVelha extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoPos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoPos1ActionPerformed
-        velha.inserirJogada(jogadorAtual, 1);
-        if (jogadorAtual == j1) {
+        velha.inserirJogada(velha.getJogadorAtual(), 1);
+        if (velha.getJogadorAtual() == velha.getJogador1()) {
             botaoPos1.setText(CampoSimboloJ1.getText());
-            jogadorAtual = j2;
+            velha.setJogadorAtual(velha.getJogador2());
         } else {
             botaoPos1.setText(CampoSimboloJ2.getText());
-            jogadorAtual = j1;
+            velha.setJogadorAtual(velha.getJogador1());
         }
         botaoPos1.setEnabled(false);
         atualizarPlacar();
     }//GEN-LAST:event_botaoPos1ActionPerformed
 
     private void botaoPos2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoPos2ActionPerformed
-        velha.inserirJogada(jogadorAtual, 2);
-        if (jogadorAtual == j1) {
+        velha.inserirJogada(velha.getJogadorAtual(), 2);
+        if (velha.getJogadorAtual() == velha.getJogador1()) {
             botaoPos2.setText(CampoSimboloJ1.getText());
-            jogadorAtual = j2;
+            velha.setJogadorAtual(velha.getJogador2());
         } else {
             botaoPos2.setText(CampoSimboloJ2.getText());
-            jogadorAtual = j1;
+            velha.setJogadorAtual(velha.getJogador1());
         }
         botaoPos2.setEnabled(false);
         atualizarPlacar();
     }//GEN-LAST:event_botaoPos2ActionPerformed
 
     private void botaoPos3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoPos3ActionPerformed
-        velha.inserirJogada(jogadorAtual, 3);
-        if (jogadorAtual == j1) {
+        velha.inserirJogada(velha.getJogadorAtual(), 3);
+        if (velha.getJogadorAtual() == velha.getJogador1()) {
             botaoPos3.setText(CampoSimboloJ1.getText());
-            jogadorAtual = j2;
+           velha.setJogadorAtual(velha.getJogador2());
         } else {
             botaoPos3.setText(CampoSimboloJ2.getText());
-            jogadorAtual = j1;
+            velha.setJogadorAtual(velha.getJogador1());
         }
         botaoPos3.setEnabled(false);
         atualizarPlacar();
     }//GEN-LAST:event_botaoPos3ActionPerformed
 
     private void botaoPos4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoPos4ActionPerformed
-        velha.inserirJogada(jogadorAtual, 4);
-        if (jogadorAtual == j1) {
+        velha.inserirJogada(velha.getJogadorAtual(), 4);
+        if (velha.getJogadorAtual() == velha.getJogador1()) {
             botaoPos4.setText(CampoSimboloJ1.getText());
-            jogadorAtual = j2;
+            velha.setJogadorAtual(velha.getJogador2());
         } else {
             botaoPos4.setText(CampoSimboloJ2.getText());
-            jogadorAtual = j1;
+            velha.setJogadorAtual(velha.getJogador1());
         }
         botaoPos4.setEnabled(false);
         atualizarPlacar();
     }//GEN-LAST:event_botaoPos4ActionPerformed
 
     private void botaoPos5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoPos5ActionPerformed
-        velha.inserirJogada(jogadorAtual, 5);
-        if (jogadorAtual == j1) {
+        velha.inserirJogada(velha.getJogadorAtual(), 5);
+        if (velha.getJogadorAtual() == velha.getJogador1()) {
             botaoPos5.setText(CampoSimboloJ1.getText());
-            jogadorAtual = j2;
+            velha.setJogadorAtual(velha.getJogador2());
         } else {
             botaoPos5.setText(CampoSimboloJ2.getText());
-            jogadorAtual = j1;
+            velha.setJogadorAtual(velha.getJogador1());
         }
         botaoPos5.setEnabled(false);
         atualizarPlacar();
     }//GEN-LAST:event_botaoPos5ActionPerformed
 
     private void botaoPos6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoPos6ActionPerformed
-        velha.inserirJogada(jogadorAtual, 6);
-        if (jogadorAtual == j1) {
+        velha.inserirJogada(velha.getJogadorAtual(), 6);
+        if (velha.getJogadorAtual() == velha.getJogador1()) {
             botaoPos6.setText(CampoSimboloJ1.getText());
-            jogadorAtual = j2;
+            velha.setJogadorAtual(velha.getJogador2());
         } else {
             botaoPos6.setText(CampoSimboloJ2.getText());
-            jogadorAtual = j1;
+            velha.setJogadorAtual(velha.getJogador1());
         }
         botaoPos6.setEnabled(false);
         atualizarPlacar();
     }//GEN-LAST:event_botaoPos6ActionPerformed
 
     private void botaoPos7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoPos7ActionPerformed
-        velha.inserirJogada(jogadorAtual, 7);
-        if (jogadorAtual == j1) {
+        velha.inserirJogada(velha.getJogadorAtual(), 7);
+        if (velha.getJogadorAtual() == velha.getJogador1()) {
             botaoPos7.setText(CampoSimboloJ1.getText());
-            jogadorAtual = j2;
+            velha.setJogadorAtual(velha.getJogador2());
         } else {
             botaoPos7.setText(CampoSimboloJ2.getText());
-            jogadorAtual = j1;
+            velha.setJogadorAtual(velha.getJogador1());
         }
         botaoPos7.setEnabled(false);
         atualizarPlacar();
     }//GEN-LAST:event_botaoPos7ActionPerformed
 
     private void botaoPos8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoPos8ActionPerformed
-        velha.inserirJogada(jogadorAtual, 8);
-        if (jogadorAtual == j1) {
+        velha.inserirJogada(velha.getJogadorAtual(), 8);
+        if (velha.getJogadorAtual() == velha.getJogador1()) {
             botaoPos8.setText(CampoSimboloJ1.getText());
-            jogadorAtual = j2;
+            velha.setJogadorAtual(velha.getJogador2());
         } else {
             botaoPos8.setText(CampoSimboloJ2.getText());
-            jogadorAtual = j1;
+            velha.setJogadorAtual(velha.getJogador1());
         }
         botaoPos8.setEnabled(false);
         atualizarPlacar();
     }//GEN-LAST:event_botaoPos8ActionPerformed
 
     private void botaoPos9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoPos9ActionPerformed
-        velha.inserirJogada(jogadorAtual, 9);
-        if (jogadorAtual == j1) {
+        velha.inserirJogada(velha.getJogadorAtual(), 9);
+        if (velha.getJogadorAtual() == velha.getJogador1()) {
             botaoPos9.setText(CampoSimboloJ1.getText());
-            jogadorAtual = j2;
+            velha.setJogadorAtual(velha.getJogador2());
         } else {
             botaoPos9.setText(CampoSimboloJ2.getText());
-            jogadorAtual = j1;
+            velha.setJogadorAtual(velha.getJogador1());
         }
         botaoPos9.setEnabled(false);
         atualizarPlacar();
@@ -532,10 +527,10 @@ public class TelaVelha extends javax.swing.JFrame {
                 botaoPos7.setEnabled(true);
                 botaoPos8.setEnabled(true);
                 botaoPos9.setEnabled(true);
-                j1.setNome(CampoNomeJ1.getText());
-                j2.setNome(CampoNomeJ2.getText());
-                j1.setSimbolo(CampoSimboloJ1.getText());
-                j2.setSimbolo(CampoSimboloJ2.getText());
+                velha.getJogador1().setNome(CampoNomeJ1.getText());
+                velha.getJogador2().setNome(CampoNomeJ2.getText());
+                velha.getJogador1().setSimbolo(CampoSimboloJ1.getText());
+                velha.getJogador2().setSimbolo(CampoSimboloJ2.getText());
             } else {
                 JOptionPane.showMessageDialog(null, "Símbolos não podem ser idênticos!", "MENSAGEM", 0);
             }
