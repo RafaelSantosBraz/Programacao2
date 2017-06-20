@@ -34,7 +34,15 @@ public class Pilha {
         elementos.remove(0);
         return true;
     }
-
+    
+    public boolean desempilharExcecao() throws ExecaoPilhaVazia{
+        if (pilhaVazia()) {
+            throw new ExecaoPilhaVazia(); //não há retorno, ele dispara a exceção especificada
+        }
+        elementos.remove(0);
+        return true;
+    }
+    
     public ArrayList<String> getElementos() {
         return elementos;
     }
