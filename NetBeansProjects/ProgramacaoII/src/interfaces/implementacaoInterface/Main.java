@@ -23,5 +23,8 @@ public class Main {
         for (Veiculo v : frota) {
             System.out.println(String.format("%.2f", v.calcularIPVA())); //chama o método da classe carro ou caminhão
         }
+        
+        Object o = new Carro();
+        
     }
 }

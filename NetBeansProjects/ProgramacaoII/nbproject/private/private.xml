@@ -2,6 +2,15 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/media/rafael/Dados%20Compartilhados/GitHub/Programacao2/NetBeansProjects/ProgramacaoII/src/interfaces/Veiculo.java</file>
+            <file>file:/media/rafael/Dados%20Compartilhados/GitHub/Programacao2/NetBeansProjects/ProgramacaoII/src/pilha/PilhaGenerica.java</file>
+            <file>file:/media/rafael/Dados%20Compartilhados/GitHub/Programacao2/NetBeansProjects/ProgramacaoII/src/interfaces/implementacaoInterface/Main.java</file>
+            <file>file:/media/rafael/Dados%20Compartilhados/GitHub/Programacao2/NetBeansProjects/ProgramacaoII/src/interfaces/implementacaoInterface/Carro.java</file>
+            <file>file:/media/rafael/Dados%20Compartilhados/GitHub/Programacao2/NetBeansProjects/ProgramacaoII/test/pilha/PilhaTest.java</file>
+            <file>file:/media/rafael/Dados%20Compartilhados/GitHub/Programacao2/NetBeansProjects/ProgramacaoII/src/interfaces/Carro.java</file>
+            <file>file:/media/rafael/Dados%20Compartilhados/GitHub/Programacao2/NetBeansProjects/ProgramacaoII/src/pilha/Pilha.java</file>
+            <file>file:/media/rafael/Dados%20Compartilhados/GitHub/Programacao2/NetBeansProjects/ProgramacaoII/test/pilha/PilhaGenericaTest.java</file>
+        </group>
     </open-files>
 </project-private>

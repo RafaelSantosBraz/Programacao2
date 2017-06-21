@@ -15,7 +15,11 @@ import java.util.ArrayList;
 public class PilhaGenerica<T> {
 
     private ArrayList<T> elementos;
-
+    
+    public static <I extends Number> Double MetodoGenerico(I i, I i2){
+        return i.doubleValue()+ i2.doubleValue();
+    }
+    
     public PilhaGenerica() {
         elementos = new ArrayList<>();
     }

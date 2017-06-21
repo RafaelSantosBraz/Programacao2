@@ -21,6 +21,7 @@ public class Carro extends Veiculo {
         super.setValor(valor);
         
     }
+
     @Override
     public double calcularIPVA() {
         if (2017 - this.getAnoFabricacao() >= 20) {
@@ -28,5 +29,6 @@ public class Carro extends Veiculo {
         }
         return this.getValor() * 0.04;
     }
+    
 
 }

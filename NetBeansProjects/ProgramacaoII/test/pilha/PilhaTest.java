@@ -78,6 +78,8 @@ public class PilhaTest {
             p.desempilharExcecao();
         } catch (ExecaoPilhaVazia e) {
             System.out.println(e.getMessage());
+        } catch (Exception e){
+            System.out.println("deu erro");
         }
     }
 }

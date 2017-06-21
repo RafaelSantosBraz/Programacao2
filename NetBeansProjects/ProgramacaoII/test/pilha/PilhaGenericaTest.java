@@ -50,6 +50,8 @@ public class PilhaGenericaTest {
         System.out.println(p.getElementos().get(1));
         p.desempilhar();
         System.out.println(p.getElementos().get(0));
+        
+        System.out.println(p.MetodoGenerico(299999999,0));
     }
 
 }
